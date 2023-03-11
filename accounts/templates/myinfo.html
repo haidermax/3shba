@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block container %}
+<div class="d-flex align-items-center justify-content-center p-3">
+
+										<div class="wideget-user">
+											<div class="row">
+												<div dir="rtl" class="col-lg-8 col-md-8 ">
+													<div class="wideget-user-desc">
+														<div class="wideget-user-img">
+															<img class="img-avatar"  src="{{users.img.url}}" alt="img">
+														</div>
+														<div class="">
+															<h4>{{ users.user_id.first_name }}</h4>
+															<h6 class="text-muted mb-3">تم الانضمام في : {{user.user_id.date_joined}}</h6>
+		
+														</div>
+													</div>
+												</div>
+												
+											</div>
+										</div>
+									</div>
+{% endblock container %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+                {% block container %}
+  
+                {% if order %}
+                <div class="table-responsive">
+                    <table class="table card-table table-vcenter text-nowrap">
+                        <thead >
+                            <tr>
+                                <th>ت</th>
+                                <th>اسم المادة</th>
+                                <th>الكمية</th>
+                                <th>التكلفة الكلية</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in order %}
+                            <tr>
+                                <th scope="row">{{forloop.counter}}</th>
+                                <td>{{i.name.prd_name}}</td>
+                                <td>{{i.quantity}}</td>
+                                <td>{{i.name.total}}د.ع</td>
+                                <td><a href="/del/{{i.id}}"> حذف </a></td>
+                            </tr>
+{% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+            <br>
+            <br>
+            <div class="alert alert-success" role="alert">
+                التكلفة الكلية للطلب: {{total}} د.ع
+              </div>
+ 
+    <br>
+    <div >
+        <button class="btn btn-info" onclick="window.location.href={% url 'sendorder' %}">ارسال الطلب</button>
+        <button  class="btn btn-danger" onclick="window.location.href={% url 'delorder' %}">حذف الطلب</button>
+
+    </div>
+                 
+               {% else %}
+                 
+
+               <div class="d-flex align-items-center justify-content-center p-3">
+               <h1>لا يوجد لديك طلبات</h1></div>
+                {% endif %}
+
+				{% endblock container %}

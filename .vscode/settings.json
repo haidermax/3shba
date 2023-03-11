@@ -1,0 +1,15 @@
+{
+    "python.linting.pylintArgs": [
+        "--load-plugins=pylint_django"
+    ],
+
+    "[python]": {
+
+    },
+    "django.snippets.exclude": [
+    
+        "cms",
+        "wagtail"
+    ],
+    "python.pythonPath": "C:\\python\\python.exe"
+}

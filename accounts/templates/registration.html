@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block container %}
+<div class="col-lg-9">
+<div class="container">
+  <div class="jumbotron">
+  {% if msg %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  {{msg}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endif %}
+     <h1>مرحباً بك, يرجى ملئ معلومات التسجيل </h1>
+     <div style="width: 50%;margin: auto;">
+      <form action="" method="POST" class="post-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in user_form %}
+    <div class="">
+        {{ field.label_tag }} {{ field }}
+    </div>
+{% endfor %}
+        {{profile_form.as_p}}
+        <input class="btn btn-primary" type="submit" value="sign up">
+    </form></div>
+  </div>
+</div>
+</div>
+{% endblock container %}

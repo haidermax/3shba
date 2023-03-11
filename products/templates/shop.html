@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block container %}
+<div class="container">
+    
+       
+        <div class="row">
+                <link href="{% static 'css\style.css' %} " rel="stylesheet" />
+            {% for pr in prd %}
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                <div class="card item-card">
+                        {% if pr.discount > 0 %}
+                        <div class="ribbone">
+                        
+                                <div class="ribbon"><span>تخفيض  {{pr.discount}}%</span></div>
+                           </div>
+                        {% endif %}
+                    
+                    <div class="product-grid6  card-body">
+                        <div class="product-image6">
+                            <a href="#">
+                                <center><img class="img-fluid" style="height: 150px; width: 150px ; border-radius: 50%;" src="{{pr.img.url}}" alt="img"></center>     
+                            </a>
+                        </div>
+                        <div class="product-content text-center">					
+                            <h4 class="title " style="font-weight: bolder;"><a href="#">{{pr.prd_name}}</a></h4>
+                            {% if pr.discount < 1 %}
+                            <div class="product_price"><span class="mr-4">د.ع{{pr.total}}</span></div>
+                            {% else %}
+                           <div style="font-weight: bold"><span class="mr-4" style="text-decoration: line-through; color: grey;"> {{pr.prd_price}} د.ع </span> <span class="mr-4"> {{pr.total}} د.ع </span></div>
+                           
+                            {% endif %}
+                        </div>
+                        {% if user.is_authenticated %}
+                                            <ul class="icons">
+                            <li><a href="" data-tip="Quick View"><i class="fa fa-search "></i></a></li>
+                            <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-heart-o"></i></a></li>
+                            <li><a href="/add/{{pr.id}}" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
+                        </ul>
+                        {% else %}
+       <ul class="icons">
+                <li><a href="{% url 'login' %}" data-tip="سجل الدخول للطلب"><i class="fa fa-lock"></i></a></li>
+                        {% endif %}
+    </ul>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+    </div><!-- COL-END -->
+{% endblock container %}
