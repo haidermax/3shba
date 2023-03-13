@@ -18,7 +18,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from ordering.views import ordering,myorder,DeleteOrder,SendOrder,delitem
-from products.views import main,recom,cat
+from products.views import main,recom,cat,Cating,Prding
 from accounts.views import user_login,user_logout,myinfo, register
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,7 +34,9 @@ urlpatterns = [
     path('logout/', user_logout ,name="logout"),
     path('myorder/',myorder,name="myorder"),
     path('myinfo/',myinfo,name="myinfo"),
-    path('cat/<int:pk>',cat,name="cats")
+    path('cat/<int:pk>',cat,name="cats"),
+    path('catmanage/',Cating,name="cating"),
+    path('prdmanage/',Prding,name="prding"),
 
     # path('edit/<int:id>/', editprd ,name="editproduct")
 ]

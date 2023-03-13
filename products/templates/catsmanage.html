@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+                {% block container %}
+<div class="container">
+    <h2 class="text-center">ادارة اقسام التطبيق</h2>
+
+    <!-- Category table -->
+    <table class="table table-bordered" >
+        <thead class="tab-menu-heading">
+            <tr>
+                <th class="text-center font-weight-bold" style="font-size:20px;background-color: #FFDBA6">الاقسام</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cat in cats %}
+            <tr>
+                <td style="font-weight:800" class="text-center">{{cat.cat_name}}</td>
+            </tr>
+{% endfor %}
+
+        </tbody>
+    </table>
+
+    <!-- Category form -->
+    <form method="POST" style="width:50%">
+
+        {% csrf_token %}
+        <div class="form-group">
+        <br>
+            <input type="text" class="form-control" name="catname" placeholder="قم بأضافة قسم">
+        </div>
+        <button type="submit" class="btn btn-primary">اضافة</button>
+    </form>
+
+</div>
+{% endblock container %}

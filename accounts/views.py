@@ -54,11 +54,8 @@ def user_login(request):
             password = request.POST.get('password')
             user = authenticate(username=username, password=password)
             if user:
-                if user.is_active:
-                    login(request,user)
-                    return HttpResponseRedirect(reverse('home'))
-                else:
-                    return HttpResponse("حسابك غير نشط.")
+                login(request,user)
+                return HttpResponseRedirect(reverse('home'))
             else:
                 msg="خطأ في الدخول! يرجى التأكد من المعلومات"
                 return render(request, 'login.html', {'msg':msg})

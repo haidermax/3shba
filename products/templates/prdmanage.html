@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+                {% block container %}
+<div class="container">
+    <h2 class="text-center">ادارة منتجات التطبيق</h2>
+
+    <!-- Category table -->
+    <table class="table table-bordered" >
+        <thead class="tab-menu-heading">
+            <tr>
+                <th class="text-center font-weight-bold" style="font-size:20px;background-color: #FFDBA6">اسم المنتج</th>
+                <th class="text-center font-weight-bold" style="font-size:20px;background-color: #FFDBA6">السعر</th>
+                <th class="text-center font-weight-bold" style="font-size:20px;background-color: #FFDBA6">الصورة</th>
+                <th class="text-center font-weight-bold" style="font-size:20px;background-color: #FFDBA6">القسم</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for prd in prds %}
+            <tr>
+                <td style="font-weight:800" class="text-center">{{prd.prd_name}}</td>
+                <td style="font-weight:800" class="text-center">{{prd.prd_price}}</td>
+                <td style="height:50px;width:50px;" class="text-center"> <img src="{{prd.img}}"></td>
+                <td style="height:50px;width:50px;" class="text-center">{{prd.cat_id.cat_name}}</td>
+            </tr>
+{% endfor %}
+
+        </tbody>
+    
+    </table>
+<hr>
+<h2 class="text-center"> اضافة منتجات </h2>
+
+    <!-- Category form -->
+    <form method="POST" style="width:50%">
+
+        {% csrf_token %}
+        <div class="form-group">
+            {% for field in pr %}
+          
+                <span>
+                    <h4 style="text-align: right;">
+                        {{ field.label_tag }}
+                    </h4>
+               
+               {{ field }}
+                </span>
+        {% endfor %}
+      
+        
+        <label style="text-align: right;font-size:25px;font-weight:900;" class="form-label" for="customFile">صورة المنتج</label>
+        <input name="img" type="file" class="form-control" id="customFile" accept="image/*"/>
+        <br>
+        <button type="submit" class="btn btn-primary">اضافة</button>
+    </form>
+
+</div>
+{% endblock container %}
