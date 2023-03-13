@@ -32,7 +32,7 @@
 <h2 class="text-center"> اضافة منتجات </h2>
 
     <!-- Category form -->
-    <form method="POST" style="width:50%">
+    <form action="" method="POST" class="post-form" enctype="multipart/form-data" style="width:50%">
 
         {% csrf_token %}
         <div class="form-group">
@@ -47,9 +47,6 @@
                 </span>
         {% endfor %}
       
-        
-        <label style="text-align: right;font-size:25px;font-weight:900;" class="form-label" for="customFile">صورة المنتج</label>
-        <input name="img" type="file" class="form-control" id="customFile" accept="image/*"/>
         <br>
         <button type="submit" class="btn btn-primary">اضافة</button>
     </form>
