@@ -44,6 +44,7 @@ def cat(request,pk):
 def Cating(request):
     if request.user.is_authenticated:
         if request.user.is_staff:
+            user = Profile.objects.get(user_id= request.user)
             category = Category.objects.all()
             if request.method == "POST":
                 ct =request.POST.get('catname')
@@ -51,7 +52,7 @@ def Cating(request):
                 newcat=Category(cat_name=ct)
                 newcat.save()
                 return redirect ('cating')
-            return render(request,'catsmanage.html',{'cats':category})
+            return render(request,'catsmanage.html',{'cats':category,'users':user})
         else:
             return redirect ('home')
     else:
@@ -60,19 +61,21 @@ def Cating(request):
 
 def Prding(request):
     if request.user.is_authenticated:
+
         if request.user.is_staff:
+            user = Profile.objects.get(user_id= request.user)
             prd = Product.objects.all()
             if request.method == "POST":
                 pr =Products(data=request.POST)
                 if pr.is_valid():
                     prr=pr.save(commit=False)
-                    prr.img=request.POST.get('img')
+                    prr.img = request.FILES['img']
                     prr.sold=False
                     prr.save()
                     return redirect ('prding')
             else:
                 pr =Products()
-            return render(request,'prdmanage.html',{'prds':prd,'pr':pr})
+            return render(request,'prdmanage.html',{'prds':prd,'pr':pr,'users':user})
         else:
             return redirect ('home')
     else:

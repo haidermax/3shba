@@ -23,7 +23,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 SECRET_KEY = 'wp*=y+w)rpoeuh*2qhqp)z8^z7ev_6xk5!p@u+4_h=9h3t8w$+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
