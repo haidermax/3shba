@@ -3,14 +3,16 @@
                 {% block container %}
   
                 {% if order %}
-                <div class="table-responsive">
-                    <table class="table card-table table-vcenter text-nowrap">
+                <div class="table-responsive container ">
+                    <table class="table table-bordered text-nowrap">
                         <thead >
                             <tr>
                                 <th>ت</th>
                                 <th>اسم المادة</th>
                                 <th>الكمية</th>
+                                <th>القياس</th>
                                 <th>التكلفة الكلية</th>
+                                <th>اختيارات</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -19,8 +21,9 @@
                                 <th scope="row">{{forloop.counter}}</th>
                                 <td>{{i.name.prd_name}}</td>
                                 <td>{{i.quantity}}</td>
-                                <td>{{i.name.total}}د.ع</td>
-                                <td><a href="/del/{{i.id}}"> حذف </a></td>
+                                <td>{{i.name.unit}}</td>
+                                <td ><span class="currency">{{i.name.total}}</span>د.ع</td>
+                                <td><a href="/del/{{i.id}}" class="btn btn-danger"> حذف </a></td>
                             </tr>
 {% endfor %}
                         </tbody>
@@ -30,7 +33,7 @@
             <br>
             <br>
             <div class="alert alert-success" role="alert">
-                التكلفة الكلية للطلب: {{total}} د.ع
+                التكلفة الكلية للطلب: <span class="currency">{{total}}</span> د.ع
               </div>
  
     <br>

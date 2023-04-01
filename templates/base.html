@@ -21,7 +21,8 @@
 
 </head>
 
-<body >
+<body  dir="rtl" style="text-align: right">
+    
     <!-- Preloader -->
     <div id="preloader">
         <div class="spinner"></div>
@@ -66,6 +67,7 @@
                                     </ul>
                                 </li>
                                 <li><a href="{% url 'home' %}">اتصل بنا</a></li>
+                        
                             </ul>
                             <!-- Search Button -->
                             {% block search %}
@@ -188,6 +190,15 @@
     <!-- Active js -->
     <script src="{% static 'js/active.js' %}"></script>
 
+    <script>
+    let x = document.querySelectorAll(".currency");
+    for (let i = 0, len = x.length; i < len; i++) {
+        let num = Number(x[i].innerHTML)
+                .toLocaleString('en');
+        x[i].innerHTML = num;
+        x[i].classList.add("currSign");
+    }
+</script>
 </body>
 
 </html>

@@ -17,26 +17,28 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from ordering.views import ordering,myorder,DeleteOrder,SendOrder,delitem
-from products.views import main,recom,cat,Cating,Prding
-from accounts.views import user_login,user_logout,myinfo, register
+from ordering.views import ordering, myorder, DeleteOrder, SendOrder, delitem
+from products.views import main, recom, cat, Cating, Prding, details, editprd
+from accounts.views import user_login, user_logout, myinfo, register
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('addprd/', Addprd ,name="addproduct"),
-    path('', main ,name="home"),
-    path('best/', recom ,name="recom"),
-    path('login/', user_login ,name="login"),
-    path('reg/', register ,name="reg"),
-    path('sendorder/', SendOrder ,name="sendorder"),
-    path('delorder/', DeleteOrder ,name="delorder"),
-    path('add/<int:pk>', ordering ,name="add"),
-    path('del/<int:pk>', delitem ,name="del"),
-    path('logout/', user_logout ,name="logout"),
-    path('myorder/',myorder,name="myorder"),
-    path('myinfo/',myinfo,name="myinfo"),
-    path('cat/<int:pk>',cat,name="cats"),
-    path('catmanage/',Cating,name="cating"),
-    path('prdmanage/',Prding,name="prding"),
+    path('', main, name="home"),
+    path('best/', recom, name="recom"),
+    path('login/', user_login, name="login"),
+    path('reg/', register, name="reg"),
+    path('sendorder/', SendOrder, name="sendorder"),
+    path('delorder/', DeleteOrder, name="delorder"),
+    path('del/<int:pk>', delitem, name="del"),
+    path('logout/', user_logout, name="logout"),
+    path('myorder/', myorder, name="myorder"),
+    path('myinfo/', myinfo, name="myinfo"),
+    path('cat/<int:pk>', cat, name="cats"),
+    path('catmanage/', Cating, name="cating"),
+    path('prdmanage/', Prding, name="prding"),
+    path('details/<int:pk>', details, name="details"),
+    path('editprd/<int:pk>', editprd, name="editprd"),
 
     # path('edit/<int:id>/', editprd ,name="editproduct")
 ]

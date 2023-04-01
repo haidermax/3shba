@@ -1,6 +1,15 @@
+
 {% extends 'base.html' %}
+{% load static %}
 
                 {% block container %}
+                <div class="container">
+                    <a href="https://www.youtube.com/@hussu1400" target="_blank">
+                        <img width="100%" src="{% static 'img/yt.jpg' %}" class="rounded mx-auto d-block" alt="youtube">
+                    </a>
+
+                </div>
+                <hr style="margin: 20pt;">
                 <div class="container">
     
        
@@ -11,36 +20,32 @@
                             <div class="card item-card">
                                     {% if pr.discount > 0 %}
                                     <div class="ribbone">
-                                    
+
                                             <div class="ribbon"><span>تخفيض  {{pr.discount}}%</span></div>
                                        </div>
                                     {% endif %}
-                                
+
                                 <div class="product-grid6  card-body">
                                     <div class="product-image6">
                                         <a href="#">
-                                            <center><img class="img-fluid" style="height: 150px; width: 150px ; border-radius: 50%;" src="{{pr.img.url}}" alt="img"></center>     
+                                            <div style="text-align: center;"><img class="img-fluid" style="height: 150px; width: 150px ; border-radius: 50%;" src="{{pr.img.url}}" alt="img"></div>
                                         </a>
                                     </div>
-                                    <div class="product-content text-center">					
+                                    <div class="product-content text-center">
                                         <h4 class="title " style="font-weight: bolder;"><a href="#">{{pr.prd_name}}</a></h4>
                                         {% if pr.discount < 1 %}
-                                        <div class="product_price"><span class="mr-4">د.ع{{pr.total}}</span></div>
+                                        <div class="product_price"><span class="mr-4"><span class="currency">{{pr.total}}</span> د.ع </span></div>
                                         {% else %}
                                        <div style="font-weight: bold"><span class="mr-4" style="text-decoration: line-through; color: grey;"> {{pr.prd_price}} د.ع </span> <span class="mr-4"> {{pr.total}} د.ع </span></div>
-                                       
+
                                         {% endif %}
                                     </div>
-                                    {% if user.is_authenticated %}
-                                                        <ul class="icons">
 
-                                        <li><a href="/add/{{pr.id}}" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>
-                                    {% else %}
-                   <ul class="icons">
-                            <li><a href="{% url 'login' %}" data-tip="سجل الدخول للطلب"><i class="fa fa-lock"></i></a></li>
-                                    {% endif %}
-                </ul>
+                                    <ul class="icons">
+
+                                        <li><a href="/details/{{pr.pk}} " class="text-fb-blue" data-tip="اضغط لرؤية التفاصيل"><i class="fa fa-eye"></i></a></li>   </ul>
+
+
                                 </div>
                             </div>
                         </div>

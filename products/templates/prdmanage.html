@@ -5,29 +5,31 @@
     <h2 class="text-center">ادارة منتجات التطبيق</h2>
 
     <!-- Category table -->
-    <table class="table table-bordered" >
+    <table class="table table-bordered table-fit"  >
         <thead class="tab-menu-heading">
             <tr>
-                <th class="text-center font-weight-bold" style="font-size:20px;background-color: #FFDBA6">اسم المنتج</th>
-                <th class="text-center font-weight-bold" style="font-size:20px;background-color: #FFDBA6">السعر</th>
-                <th class="text-center font-weight-bold" style="font-size:20px;background-color: #FFDBA6">الصورة</th>
-                <th class="text-center font-weight-bold" style="font-size:20px;background-color: #FFDBA6">القسم</th>
+                <th class="text-center font-weight-bold" style="font-size:20px;background-color: #FFDBA6;white-space: nowrap;width: 1%;">اسم المنتج</th>
+                <th class="text-center font-weight-bold" style="font-size:20px;background-color: #FFDBA6;white-space: nowrap;width: 1%;">السعر</th>
+                <th class="text-center font-weight-bold" style="font-size:20px;background-color: #FFDBA6;white-space: nowrap;width: 1%;">القسم</th>
+                <th class="text-center font-weight-bold" style="font-size:20px;background-color: #FFDBA6;white-space: pre-wrap;width: 1%;">تعديل</th>
 
             </tr>
         </thead>
         <tbody>
-            {% for prd in prds %}
+                      {% for prd in prds %}
             <tr>
-                <td style="font-weight:800" class="text-center">{{prd.prd_name}}</td>
-                <td style="font-weight:800" class="text-center">{{prd.prd_price}}</td>
-                <td style="height:50px;width:50px;" class="text-center"> <img src="{{prd.img.url}}" %}"></td>
+                <td style="font-weight:800" class="text-center"><a class="btn btn-link" href="{% url 'editprd' prd.id %}">{{prd.prd_name}}</a></td>
+                <td style="font-weight:800" class="text-center currency">{{prd.prd_price}}</td>
                 <td style="height:50px;width:50px;" class="text-center">{{prd.cat_id.cat_name}}</td>
-            </tr>
+                <td style="height:50px;width:50px;" class="text-center"> <a class="btn btn-custom" href="/editprd/{{ prd.id }}">تعديل</a> </td>
+                            </tr>
 {% endfor %}
 
         </tbody>
 
     </table>
+    <hr>
+   
 <hr>
 <h2 class="text-center"> اضافة منتجات </h2>
 
@@ -46,14 +48,13 @@
                {{ field }}
                 </span>
         {% endfor %}
-<<<<<<< HEAD
 
 
-        <label style="text-align: right;font-size:25px;font-weight:900;" class="form-label" for="customFile">صورة المنتج</label>
+
+        <label style="text-align: right;font-size:25px;font-weight:900;" class="form-label" for="customFile">صورة المنتج:</label>
         <input name="img" type="file" class="form-control" id="customFile" accept="image/*"/>
-=======
-      
->>>>>>> a201d9053c25e82683138435a1dba5b57b7c318a
+
+
         <br>
         <button type="submit" class="btn btn-primary">اضافة</button>
     </form>
