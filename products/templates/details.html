@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block container %}
+
+
+  <div class="container" dir="rtl" style="text-align: right;">
+    <div class="row">
+      <div class="col-md-6">
+        <img class="rounded" width="100%" src="{{pr.img.url}}" alt="{{prd.prd_name}}">
+      </div>
+      <div class="col-md-6">
+        <h2 >{{pr.prd_name}}</h2>
+        <h5 >{{pr.description}}</h5>
+      <br>
+          <h5 class="tag-green">السعر: <span class="currency"> {{ pr.prd_price }}</span> دينار عراقي لل<span >{{ pr.unit }}</span></h5>
+<br>
+          {% if user.is_authenticated %}
+          {%  if user.is_staff %}
+              <a class="btn btn-primary" href="/editprd/{{ pr.id }} ">تحديث المعلومات</a>
+              {% else %}
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+              <label style="font-size: large;font-weight: 600;"  for="formGroupExampleInput2 ">ادخل الكمية المطلوبة:</label>
+              <input name="qt" width="50%" type="number" class="form-control" id="formGroupExampleInput2" placeholder="Another input" value="1" min="1" max="20">
+            </div>
+            <input type="submit" class="btn btn-primary" value="اضافة للسلة">
+          </form>
+              {% endif %}
+              {% else %}
+              <h5>يرجى <a href="{% url 'login' %}">تسجيل الدخول</a> لتتمكن من الحجز والشراء</h5>
+          {% endif %}
+        
+      </div>
+    </div>
+  </div>
+
+
+
+
+  {% endblock container %}

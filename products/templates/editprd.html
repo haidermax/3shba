@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block container %}
+    <div class="container">
+    <form action="" method="POST" class="post-form" enctype="multipart/form-data" style="width:50%">
+
+        {% csrf_token %}
+        <div class="form-group">
+            {% for field in pr %}
+
+                <span>
+                    <h4 style="text-align: right;">
+                        {{ field.label_tag }}
+                    </h4>
+
+               {{ field }}
+                </span>
+        {% endfor %}
+
+
+
+
+
+        <br>
+        <button type="submit" class="btn btn-primary">تحديث</button>
+    </form></div>
+{%  endblock %}
